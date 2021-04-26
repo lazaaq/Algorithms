@@ -65,6 +65,22 @@ class LinkedList:
             dataBaru.next = temp
             temp.prev = dataBaru
 
+    def removeData(self, data):
+        temp = self.head
+        found = True
+        while temp.data is not data:
+            temp = temp.next
+            if temp is None:
+                found = False
+                break
+        if not found:
+            print("the data doesn't exist")
+        else:
+            temp_prev = temp.prev
+            temp_next = temp.next
+            temp_prev.next = temp_next
+            temp_next.prev = temp_prev
+
     def display(self):
         p = self.head
         while p is not None:
