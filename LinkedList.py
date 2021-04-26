@@ -81,6 +81,26 @@ class LinkedList:
             temp_prev.next = temp_next
             temp_next.prev = temp_prev
 
+    def removeDataAtIndex(self, idx):
+        inc = 0
+        temp = self.head
+        if idx >= self.size():
+            print("index out of range")
+            return
+        if idx == self.size()-1:
+            self.removeTail()
+            return
+        if idx == 0:
+            self.removeHead()
+            return
+        while inc < idx:
+            temp = temp.next
+            inc += 1
+        temp_prev = temp.prev
+        temp_next = temp.next
+        temp_prev.next = temp_next
+        temp_next.prev = temp_prev
+
     def display(self):
         p = self.head
         while p is not None:
@@ -89,19 +109,19 @@ class LinkedList:
 
 
 linkedList = LinkedList()
-linkedList.addHead("1")
+linkedList.addHead(1)
 linkedList.display()
 
 print()
-linkedList.addHead("2")
+linkedList.addHead(2)
 linkedList.display()
 
 print()
-linkedList.addTail("3")
+linkedList.addTail(3)
 linkedList.display()
 
 print()
-linkedList.addTail("4")
+linkedList.addTail(4)
 linkedList.display()
 
 print()
@@ -113,5 +133,13 @@ linkedList.removeTail()
 linkedList.display()
 
 print()
-linkedList.addInsert("5", 1)
+linkedList.addInsert(5, 1)
+linkedList.display()
+
+print()
+linkedList.removeData(5)
+linkedList.display()
+
+print()
+linkedList.removeDataAtIndex(0)
 linkedList.display()
